@@ -1,0 +1,17 @@
+/*
+ *      Copyright (c) 2018-2025, Wilson All rights reserved.
+ */
+package ${package}.${moduleName}.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${package}.${moduleName}.entity.${className};
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+public interface ${className}Service extends IService<${className}> {
+
+}

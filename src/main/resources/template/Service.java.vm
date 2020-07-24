@@ -1,0 +1,56 @@
+﻿/*
+ *      Copyright (c) 2019-2025, Shamoto All rights reserved.
+ */
+package ${package}.${moduleName}.service;
+import java.util.List;
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${package}.${moduleName}.entity.${className};
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cloud.gds.common.core.util.R;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+public interface ${className}Service extends IService<${className}> {
+
+	/**
+	 * 分页
+	 * @param page
+	 * @return IPage
+	 */
+	IPage<${className}VO> getPage(Page page,${className} ${classname});
+	
+	/**
+	 * 列表信息返回list
+	 * @param ${classname}
+	 * @return list
+	 */
+	List<${className}VO> getList(${className} ${classname});
+	
+
+	/**
+	 * 根据id取详情
+	 * @param ${pk.lowerAttrName}
+	 * @return ${className}VO
+	 */
+	${className}VO getDetailsById(${pk.attrType} ${pk.lowerAttrName});
+
+	/**
+	 * 保存
+	 * @param ${classname}
+     * @return R
+	 */
+     R<Boolean> saveInfo(${className} ${classname});
+	
+	/**
+     * 修改
+	 * @param ${classname}
+     * @return R
+	 */
+     R<Boolean> updateInfo(${className} ${classname});
+
+}

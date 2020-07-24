@@ -1,0 +1,45 @@
+﻿/*
+ *      Copyright (c) 2019-2025, Shamoto All rights reserved.
+ */
+package ${package}.${moduleName}.mapper;
+import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import ${package}.${moduleName}.entity.${className};
+import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Mapper
+public interface ${className}Mapper extends BaseMapper<${className}> {
+
+    /**
+     * 分页
+	 * @param page
+	 * @param ${classname}
+     * @return
+     */
+	IPage getPage(Page page,@Param("query") ${className} ${classname});
+	
+	/**
+	 * 列表查询
+	 * 
+	 * @param ${className}
+	 * @return
+	 */
+	List<${className}VO> getList(@Param("query") ${className} ${classname});
+	
+	/**
+	 * 详情
+	 * @param ${pk.lowerAttrName}
+	 * return
+	 */
+	${className}VO getDetailsById(${pk.attrType} ${pk.lowerAttrName});
+
+}

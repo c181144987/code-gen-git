@@ -1,0 +1,80 @@
+﻿/*
+ *      Copyright (c) 2019-2025, Shamoto All rights reserved.
+ */
+package ${package}.${moduleName}.service.impl;
+import java.util.List;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import ${package}.${moduleName}.entity.${className};
+import ${package}.${moduleName}.mapper.${className}Mapper;
+import ${package}.${moduleName}.service.${className}Service;
+import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cloud.gds.common.core.util.R;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Service
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
+
+
+	/**
+	 * 分页
+	 * @param page
+	 * return
+	 */
+	@Override
+	public IPage<${className}VO> getPage(Page page,${className} ${classname}) {	
+		IPage<${className}VO> voPage=baseMapper.getPage(page,${classname});
+		return voPage;
+	}
+	
+	  /** 
+	   * 列表查询
+	   * @param ${classname}
+	   * @return 
+	   */
+	  @Override
+	  public List<${className}VO> getList(${className} ${classname}) {
+		  return baseMapper.getList(${classname});
+	  }
+	
+	/**
+	 * 详情
+	 * @param ${pk.lowerAttrName}
+	 * return
+	 */
+	@Override
+	public ${className}VO getDetailsById(${pk.attrType} ${pk.lowerAttrName}) {	
+		${className}VO voInfo=baseMapper.getDetailsById(${pk.lowerAttrName});
+		return voInfo;
+	}
+	
+	
+	/**
+	 * 保存
+	 * @param ${classname}
+	 * return
+	 */
+	@Override
+	public R<Boolean> saveInfo(${className} ${classname}) {
+		this.save(${classname});
+		return new R<>(Boolean.TRUE);
+	}
+	
+	/**
+	 * 修改
+	 * @param ${classname}
+	 * return
+	 */
+	@Override
+	public R<Boolean> updateInfo(${className} ${classname}) {
+		this.updateById(${classname});
+		return new R<>(Boolean.TRUE);
+	}
+
+}

@@ -1,0 +1,43 @@
+package ${package}import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+.${moduleName}.entity;
+#if(${hasBigDecimal})
+#end
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Data
+@EqualsAndHashCode(callSuper = true)
+@TableName("${tableName}" )
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Accessors(chain = true)
+public class ${className} extends Model<${className}> {
+private static final long serialVersionUID=1L;
+
+#foreach ($column in $columns)
+/**
+ * $column.comments
+ */
+    #if($column.columnName == $pk.columnName)
+    @TableId
+    #end
+private $column.attrType $column.lowerAttrName;
+#end
+
+/**
+ * 主键值
+ */
+@Override
+protected Serializable pkVal(){
+        return this.$pk.lowerAttrName;
+        }
+        }

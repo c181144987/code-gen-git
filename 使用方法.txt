@@ -1,0 +1,2 @@
+启动CodeGenApplication，待启动完成，使用 gen 表名 指令生成所需的一系列文件。
+各种参数配置修改在SysGenetrator里面，可修改作者，包名，模块等等

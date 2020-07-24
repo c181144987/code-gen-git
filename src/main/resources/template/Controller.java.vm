@@ -1,0 +1,144 @@
+﻿/*
+ *      Copyright (c) 2019-2025, Shamoto All rights reserved.
+ */
+package ${package}.${moduleName}.controller;
+import java.util.List;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cloud.gds.common.core.util.R;
+import SysLog;
+import ${package}.${moduleName}.entity.${className};
+import ${package}.${moduleName}.service.${className}Service;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@RestController
+@AllArgsConstructor
+@RequestMapping("/${pathName}")
+@Api(value = "${pathName}", description = "${comments}")
+public class ${className}Controller {
+
+  private final  ${className}Service ${classname}Service;
+
+  /**
+   * 分页查询
+   * @param page 
+   * @param ${classname} 
+   * @return
+   */
+  @GetMapping("/page")
+  public R get${className}Page(Page page, ${className} ${classname}) {
+    return  new R<>(${classname}Service.page(page,Wrappers.query(${classname})));
+  }
+  
+
+  /**
+   * 通过id查询
+   * @param ${pk.lowerAttrName}
+   * @return R
+   */
+  @GetMapping("/{${pk.lowerAttrName}}")
+  public R getById(@PathVariable("${pk.lowerAttrName}") ${pk.attrType} ${pk.lowerAttrName}){
+    return new R<>(${classname}Service.getById(${pk.lowerAttrName}));
+  }
+  
+    /**
+   * 分页查询
+   * @param page 
+   * @param ${classname} 
+   * @return
+   */
+  @GetMapping("/getPage")
+  public R get${className}Page(Page page, ${className} ${classname}) {
+    return  new R<>(${classname}Service.getPage(page,${classname}));
+  }
+  
+    /**
+   * 列表查询
+   * @param ${classname}
+   * @return
+   */
+  @GetMapping("/list")
+  @ApiOperation(value = "列表查询", notes = "列表查询")
+  public R getList(${className} ${classname}) {
+    return new R<>(${classname}Service.getList(${classname}));
+  }
+
+
+  /**
+   * 通过id查询
+   * @param ${pk.lowerAttrName}
+   * @return R
+   */
+  @GetMapping("/{${pk.lowerAttrName}}")
+  public R<${className}VO> getDetailsById(@PathVariable("${pk.lowerAttrName}") ${pk.attrType} ${pk.lowerAttrName}){
+    return new R<>(${classname}Service.getDetailsById(${pk.lowerAttrName}));
+  }
+
+  /**
+   * 新增
+   * @param ${classname} 
+   * @return R
+   */
+  @SysLog("新增${comments}")
+  @PostMapping("/save")
+  public R save(@RequestBody ${className} ${classname}){
+    return new R<>(${classname}Service.save(${classname}));
+  }
+
+  /**
+   * 修改
+   * @param ${classname} 
+   * @return R
+   */
+  @SysLog("修改${comments}")
+  @PostMapping("/updateById")
+  public R updateById(@RequestBody ${className} ${classname}){
+    return new R<>(${classname}Service.updateById(${classname}));
+  }
+
+  /**
+   * 新增
+   * @param ${classname} 
+   * @return R
+   */
+  @SysLog("新增${comments}")
+  @PostMapping("/create")
+  @ApiOperation(value = "新增", notes = "新增" )
+  public R<Boolean> saveInfo(@RequestBody ${className} ${classname}){
+    return ${classname}Service.saveInfo(${classname});
+  }
+
+  /**
+   * 修改
+   * @param ${classname} 
+   * @return R
+   */
+  @SysLog("修改${comments}")
+  @PostMapping("/update")
+  @ApiOperation(value = "修改", notes = "修改" )
+  public R<Boolean> updateInfo(@RequestBody ${className} ${classname}){
+    return ${classname}Service.updateInfo(${classname});
+  }
+
+
+  /**
+   * 通过id删除
+   * @param ${pk.lowerAttrName} id
+   * @return R
+   */
+  @SysLog("删除${comments}")
+  @PostMapping("/delete/{${pk.lowerAttrName}}")
+  @ApiOperation(value = "通过id删除", notes = "通过id删除" )
+  public R removeById(@PathVariable ${pk.attrType} ${pk.lowerAttrName}){
+    return new R<>(${classname}Service.removeById(${pk.lowerAttrName}));
+  }
+
+}
